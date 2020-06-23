@@ -1,0 +1,19 @@
+<form [formGroup]="patientObj.formPatientGroup">
+    Patient Name : <input formControlName="namecontrol" type="text" [(ngModel)]="patientObj.PatientName" value="" /> <br />
+    <div [hidden]="!(patientObj.formPatientGroup.controls['namecontrol'].hasError('required'))">Name is required</div><br/>
+    Patient Problem : <input formControlName="problemcontrol" type="text" [(ngModel)]="patientObj.PatientProblem" value="" /> <br />
+    <div [hidden]="!(patientObj.formPatientGroup.controls['problemcontrol'].hasError('required'))">Problem description is required</div><br/>
+    <input id="button1" [disabled]="!(patientObj.formPatientGroup.valid)" type="button" (click)="Submit()" value="Add Patient" />
+</form>
+<br/>
+
+<table class="table">
+    <tr>
+        <td>Patient Name</td>
+        <td>Patient Problem</td>
+    </tr>
+    <tr *ngFor = "let pat of patientObjs">
+        <td>{{pat.PatientName}}</td>
+        <td>{{pat.PatientProblem}}</td>
+    </tr>
+</table>
